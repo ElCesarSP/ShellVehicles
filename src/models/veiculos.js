@@ -1,123 +1,84 @@
 // Veiculo.js
+import db from '../db/dbconfig.js';
+
 class Veiculo {
-    constructor() {
-        this.veiculos = [];
+    constructor({
+        id,
+        marca,
+        modelo,
+        ano,
+        placa,
+        cor,
+        preco,
+        created_at,
+        updated_at,
+    }) {
+        this.id = id || null;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.placa = placa;
+        this.cor = cor;
+        this.preco = preco;
+        this.created_at = created_at || new Date().toISOString();
+        this.updated_at = updated_at || new Date().toISOString();
     }
 
-    setStatus(status) {
-        if (status !== 'Disponível' && status !== 'Indisponível') {
-            throw new Error("O status do veículo deve ser 'Disponível' ou 'Indisponível'.");
-        }
-        this.status = status;
-        this.nextStatus = status === 'Disponível' ? 'Indisponível' : 'Disponível';
+    static async pegarVeiculos() {
+        return db.select('*').from('carro');
     }
 
-    incrementarStatus() {
-        if (!this.status || (this.status !== 'Disponível' && this.status !== 'Indisponível')) {
-            throw new Error("O status do veículo deve ser definido antes de ser incrementado.");
-        }
-        const currentStatus = this.status;
-        this.status = this.nextStatus;
-        this.nextStatus = currentStatus;
-        return this.status;
+    static async buscaCarroPorPlaca(placa) {
+        const resultado = await db.select('*').from('carro').where({ placa });
+        return resultado[0];
     }
 
-    addVeiculoData(marca, modelo, ano, placa, valor) {
-        const placaValidation = /^[A-Z]{3}\d{4}$/;
+    async criarCarro() {
+        const [id] = await db('carro').insert({
+            marca: this.marca,
+            modelo: this.modelo,
+            ano: this.ano,
+            placa: this.placa,
+            cor: this.cor,
+            preco: this.preco,
+            created_at: this.created_at,
+            updated_at: this.updated_at,
+        });
 
-        if (!placaValidation.test(placa)) {
-            throw new Error("A placa deve possuir 3 letras seguidas de 4 números no formato: AAA1111.");
-        }
-        if (this.verificarPlacaExistente(placa)) {
-            throw new Error("A placa já existe no cadastro.");
-        }
-
-        if (typeof marca !== 'string' || typeof modelo !== 'string') {
-            throw new Error("A marca e o modelo devem ser strings.");
-        }
-        if (typeof ano !== 'number' || typeof valor !== 'number') {
-            throw new Error("O ano e o valor devem ser números.");
-        }
-
-        const veiculo = {
-            id: this.veiculos.length + 1,
-            marca,
-            modelo,
-            ano,
-            placa: placa.toUpperCase(), // Normaliza a placa para maiúsculas
-            valor,
-            status: 'Disponível'
-        };
-
-        this.veiculos.push(veiculo);
-        return veiculo;
+        const [registroCriado] = await db('carro').where({ id });
+        return new Veiculo(registroCriado);
     }
 
-    verificarPlacaExistente(placa) {
-        return this.veiculos.some(veiculo => veiculo.placa === placa.toUpperCase());
+    async atualizarCarroPorPlaca(placa) {
+        await db('carro')
+            .where({ placa })
+            .update({
+                marca: this.marca,
+                modelo: this.modelo,
+                ano: this.ano,
+                placa: this.placa,
+                cor: this.cor,
+                preco: this.preco,
+                updated_at: new Date().toISOString(),
+            });
+
+        const [registroAtualizado] = await db.select('*').from('carro').where({ placa });
+        return new Veiculo(registroAtualizado);
     }
 
-    concluirVenda(placa) {
-        const veiculo = this.veiculos.find(veiculo => veiculo.placa === placa.toUpperCase());
-        if (veiculo) {
-            if (veiculo.status === 'Indisponível') {
-                throw new Error("O veículo já está indisponível.");
-            }
-            veiculo.status = 'Indisponível';
-            console.log("Venda concluída com sucesso. O veículo agora está indisponível.");
-            return veiculo;
-        } else {
-            throw new Error("Veículo não encontrado");
+    static async excluirCarro(placa) {
+        await db('carro')
+            .where({ placa })
+            .del();
+    }
+
+    async salvarCarro() {
+        const carroExistente = await Veiculo.buscaCarroPorPlaca(this.placa);
+        if (carroExistente) {
+            return this.atualizarCarroPorPlaca(this.placa);
         }
-    }
-
-    getAllVeiculos() {
-        return this.veiculos;
-    }
-
-    getVeiculoByPlaca(placa) {
-        return this.veiculos.find(veiculo => veiculo.placa === placa);
-    }
-
-    updateVeiculoData(placa, marca, modelo, ano, valor, status) {
-        placa = placa.trim(); // Remove espaços em branco extras
-        const placaValidation = /^[A-Z]{3}\d{4}$/;
-
-        if (!placaValidation.test(placa)) {
-            throw new Error("A placa deve possuir 3 letras seguidas de 4 números no formato: AAA1111.");
-        }
-
-        const veiculo = this.veiculos.find(veiculo => veiculo.placa === placa.toUpperCase());
-
-        if (veiculo) {
-            veiculo.marca = marca;
-            veiculo.modelo = modelo;
-            veiculo.ano = ano;
-            veiculo.valor = valor;
-            if (status) {
-                if (status !== 'Disponível' && status !== 'Indisponível') {
-                    throw new Error("O status do veículo deve ser 'Disponível' ou 'Indisponível'.");
-                }
-                veiculo.status = status;
-                veiculo.nextStatus = status === 'Disponível' ? 'Indisponível' : 'Disponível';
-            }
-            return veiculo;
-        } else {
-            throw new Error(`Nenhum veículo encontrado com a placa: ${placa}`);
-        }
-    }
-
-    deletarVeiculoPorPlaca(placa) {
-        const index = this.veiculos.findIndex(veiculo => veiculo.placa === placa.toUpperCase());
-        if (index !== -1) {
-            this.veiculos.splice(index, 1);
-            console.log(`Veículo com placa ${placa.toUpperCase()} deletado com sucesso.`);
-            return true;
-        } else {
-            console.log(`Nenhum veículo encontrado com a placa: ${placa.toUpperCase()}`);
-            return false;
-        }
+        return this.criarCarro();
     }
 }
 
-module.exports = Veiculo;
+export default Veiculo;
