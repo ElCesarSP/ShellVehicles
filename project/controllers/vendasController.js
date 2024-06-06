@@ -1,6 +1,6 @@
-const Users = require('../models/users');
-const Veiculo = require('../models/veiculos');
-const Venda = require('../models/vendas');
+const Users = require('../models/userModel');
+const Veiculo = require('../models/veiculoModel');
+const Venda = require('../models/vendaModel');
 
 const users = new Users();
 const veiculos = new Veiculo();
@@ -9,8 +9,7 @@ const vendas = new Venda(users, veiculos);
 const createVenda = (req, res) => {
     try {
         const { clienteCpf, veiculosPlacas, formaDePagamento } = req.body;
-        const cpfString = String(clienteCpf);
-        const newVenda = vendas.addVendaData(cpfString, veiculosPlacas, formaDePagamento);
+        const newVenda = vendas.addVendaData(clienteCpf, veiculosPlacas, formaDePagamento);
         res.status(201).json(newVenda);
     } catch (error) {
         res.status(400).json({ error: error.message });

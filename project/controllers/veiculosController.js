@@ -1,4 +1,4 @@
-const Veiculo = require('../models/veiculos');
+const Veiculo = require('../models/veiculoModel');
 const veiculos = new Veiculo();
 
 const createVeiculo = (req, res) => {

@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
+const userRoutes = require('./routes/userRoutes');
+const veiculoRoutes = require('./routes/veiculoRoutes');
+const vendaRoutes = require('./routes/vendaRoutes');
 
-const usersRoutes = require('./routes/usersRoutes');
-const veiculoRoutes = require('./routes/veiculosRoutes');
-const vendaRoutes = require('./routes/vendasRoutes');
+app.use(express.json());
 
-app.use(bodyParser.json());
+app.use('/api', userRoutes);
+app.use('/api', veiculoRoutes);
+app.use('/api', vendaRoutes);
 
-app.use('/users', usersRoutes);
-app.use('/veiculos', veiculoRoutes);
-app.use('/vendas', vendaRoutes);
-
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
