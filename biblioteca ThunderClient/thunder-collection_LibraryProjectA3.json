@@ -1,0 +1,243 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "LibraryProjectA3",
+    "collectionId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+    "dateExported": "2024-06-08T01:04:38.985Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-05-24T23:58:34.053Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "Vehicle",
+            "containerId": "",
+            "created": "2024-05-24T23:58:34.054Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "Sell",
+            "containerId": "",
+            "created": "2024-05-24T23:58:34.055Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "164c52e6-67b4-4a87-a6b8-5ad7e5981d6b",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "CreatUsersData",
+            "url": "http://localhost:3000/users/CreatDataUser",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-24T23:58:34.053Z",
+            "modified": "2024-06-06T03:13:26.730Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Rafael\",\n  \"sobrenome\": \"Matos\",\n  \"idade\": 24,\n  \"email\": \"rafa@google.com\",\n  \"cpf\": \"06627715597\",\n  \"telefone\": \"(12) 3456-7890\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "2277f3e6-759e-4f95-93ea-ffce9c3c291d",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "UpDataUser",
+            "url": "http://localhost:3000/users/UpDataUser/06627715597",
+            "method": "PUT",
+            "sortNum": 15000,
+            "created": "2024-05-24T23:58:34.056Z",
+            "modified": "2024-06-06T03:13:51.350Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"João\",\n  \"sobrenome\": \"Silva\",\n  \"idade\": 30,\n  \"email\": \"joao@example.com\",\n  \"telefone\": \"(11) 98765-4321\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9895f05d-160b-4799-bddd-f1fa90b4dbf9",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "PushUsersData",
+            "url": "http://localhost:3000/users/PushUsersData",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-24T23:58:34.054Z",
+            "modified": "2024-06-02T02:47:11.866Z",
+            "headers": []
+        },
+        {
+            "_id": "c46ed308-4489-49c8-b486-61dd6158996c",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "PushUserDataID",
+            "url": "http://localhost:3000/users/PushUsersData/06627715597",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-05-24T23:58:34.055Z",
+            "modified": "2024-06-06T03:13:40.011Z",
+            "headers": []
+        },
+        {
+            "_id": "b8a43be2-e20a-4b0b-b0b6-bba8dbd377eb",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "b2d82be1-0c73-4245-b84f-a6296376832b",
+            "name": "DeleleUserData",
+            "url": "http://localhost:3000/users/DeleteUserData/066.277.155-97",
+            "method": "DELETE",
+            "sortNum": 80000,
+            "created": "2024-05-24T23:58:34.057Z",
+            "modified": "2024-06-02T02:51:25.966Z",
+            "headers": []
+        },
+        {
+            "_id": "471726f5-4a2a-4a7d-b9d7-954c17f091d7",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "CreatVehiclesData",
+            "url": "http://localhost:3000/veiculos/CreateVeiculoData",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-05-24T23:58:34.058Z",
+            "modified": "2024-06-02T02:51:40.616Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"marca\": \"Toyota\",\n  \"modelo\": \"Corolla\",\n  \"ano\": 2022,\n  \"placa\": \"EBC8434\",\n  \"valor\": 50000\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "a6e40b2d-5805-41dc-9099-db5810ad6f36",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "upDataVeiculos",
+            "url": "http://localhost:3000/veiculos/UpDataVeiculo/EBC8434",
+            "method": "PUT",
+            "sortNum": 120000,
+            "created": "2024-05-24T23:58:34.059Z",
+            "modified": "2024-06-02T03:00:01.557Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"marca\": \"Taaaayota\",\n  \"modelo\": \"Corolla\",\n  \"ano\": 2022,\n  \"valor\": 800000\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "a7b417fd-416a-4811-94aa-67a9fab2056b",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "GetVeiculoData",
+            "url": "http://localhost:3000/veiculos/PushVeiculosData",
+            "method": "GET",
+            "sortNum": 166250,
+            "created": "2024-05-24T23:58:34.067Z",
+            "modified": "2024-06-02T02:58:01.333Z",
+            "headers": []
+        },
+        {
+            "_id": "061dc85b-95d6-4e95-b6c9-a3f074913f14",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "GetVeiculosPlacaData",
+            "url": "http://localhost:3000/veiculos/PushVeiculosData/EBC8434",
+            "method": "GET",
+            "sortNum": 189375,
+            "created": "2024-05-24T23:58:34.068Z",
+            "modified": "2024-06-02T03:00:14.249Z",
+            "headers": []
+        },
+        {
+            "_id": "dd2007d5-57f7-42ef-89e2-7a183789c642",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "e3080370-3a1b-4c17-86d2-822f190c6ed7",
+            "name": "DeleteVeiculosData",
+            "url": "http://localhost:3000/veiculos/DeleteVeiculoData/EBC8434",
+            "method": "DELETE",
+            "sortNum": 340000,
+            "created": "2024-05-25T00:33:09.667Z",
+            "modified": "2024-06-02T03:00:41.825Z",
+            "headers": []
+        },
+        {
+            "_id": "54d453e5-ab14-4bcd-b3a2-0b766aca3922",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "Criar Venda",
+            "url": "http://localhost:3000/vendas/addVendaData",
+            "method": "POST",
+            "sortNum": 420000,
+            "created": "2024-06-07T01:59:52.536Z",
+            "modified": "2024-06-08T00:48:08.281Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"comprador\": {\n    \"cpf\": \"06627715597\"\n  },\n  \"veiculos\": [\n    {\n      \"placa\": \"EBC8434\"\n    }\n  ],\n  \"formaPagamento\": \"credito\",\n  \"parcelas\": 48\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "bda2c9fb-36bf-470e-87f8-ad1c9f37894a",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "Get All Vendas",
+            "url": "http://localhost:3000/vendas/vendas",
+            "method": "GET",
+            "sortNum": 430000,
+            "created": "2024-06-08T00:02:35.806Z",
+            "modified": "2024-06-08T00:02:49.025Z",
+            "headers": []
+        },
+        {
+            "_id": "023c50c4-9779-41c7-bd0a-31fbb45a65ba",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "Gell Venda Por ID",
+            "url": "http://localhost:3000/vendas/vendas/1",
+            "method": "GET",
+            "sortNum": 440000,
+            "created": "2024-06-08T00:03:06.499Z",
+            "modified": "2024-06-08T00:03:18.079Z",
+            "headers": []
+        },
+        {
+            "_id": "e494ac1d-e7b7-4714-a0b7-5df9ab86c0b8",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "Delatar Venda Por ID",
+            "url": "http://localhost:3000/vendas/Deletevenda/7",
+            "method": "DELETE",
+            "sortNum": 450000,
+            "created": "2024-06-08T00:03:31.587Z",
+            "modified": "2024-06-08T00:47:53.244Z",
+            "headers": []
+        },
+        {
+            "_id": "845a4b12-0fb3-49c9-9bd9-9ce7af55a94b",
+            "colId": "f66cf61c-b402-4c15-ac9c-a066092a52dd",
+            "containerId": "335b2429-15cb-4aac-8a6c-667f329fedbb",
+            "name": "UpData Venda Por ID",
+            "url": "http://localhost:3000/vendas/upDataVendas/2",
+            "method": "PUT",
+            "sortNum": 460000,
+            "created": "2024-06-08T00:04:13.739Z",
+            "modified": "2024-06-08T00:12:30.595Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"novoComprador\": {\n    \"cpf\": \"06627715597\"\n  },\n  \"novoVeiculo\": {\n    \"placa\": \"EBC8434\"\n  },\n  \"novaFormaPagamento\": \"cartao\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "BHrOWcdunoEBW9d8curmHXF4KRZt9rmjXI729kJCxwhDX17dZIMUtsXf0rd1ZLXYRAccX7_c0rJDdOndeIapYA"
+}
