@@ -24,6 +24,7 @@ const getAllVeiculos = (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
         console.error('Erro ao recuperar lista de veículos:', error.message);
+        throw new Error("Veículo não encontrado");
     }
 };
 
@@ -31,6 +32,7 @@ const getVeiculoByPlaca = (req, res) => {
     const veiculo = veiculosInstance.getVeiculoByPlaca(req.params.placa);
     if (veiculo) {
         res.status(200).json(veiculo);
+        console.log(`Veiculo encontrado por Placa:${veiculosInstance}`)
     } else {
         res.status(404).json({ error: 'Veículo não encontrado' });
     }

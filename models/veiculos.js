@@ -67,12 +67,13 @@ class Veiculo {
             console.log("Venda concluída com sucesso. O veículo agora está indisponível.");
             return veiculo;
         } else {
+            console.log("Veiculo não encontrado")
             throw new Error("Veículo não encontrado");
         }
     }
 
     getAllVeiculos() {
-        return this.veiculos;
+        return this.veiculos;  
     }
 
     getVeiculoByPlaca(placa) {

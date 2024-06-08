@@ -5,16 +5,13 @@ const Venda = require('../models/vendas');
 const { usersInstance } = require('./usersController');
 const { veiculosInstance } = require('./veiculosController');
 
-//const veiculosInstance = new Veiculo();
-//const usersInstance = new Users();
 const vendasInstance = []; // Definindo a variável vendas no escopo global
 
 const realizarVenda = (req, res) => {
     try {
         const { comprador, veiculos, formaPagamento, parcelas } = req.body;
         const userCpf = comprador.cpf; // Acessa o CPF corretamente
-        // Verificar se o usuário existe
-        //console.log(req.body)
+        
         const user = usersInstance.getUserByCpf(userCpf);
 
         if (!user) {
