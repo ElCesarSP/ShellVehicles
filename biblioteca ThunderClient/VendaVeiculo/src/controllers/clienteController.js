@@ -1,8 +1,6 @@
 import { openDb } from "../configDB.js";
 import { Cliente } from "../model/clienteModel.js";
 
-//Criando tabela
-
 export async function createTableCliente() {
     try {
         const db = await openDb();
