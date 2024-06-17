@@ -12,12 +12,17 @@ routerVenda.get('/shell', (req, res) => {
 
 //Rota para buscar todas VENDAS
 routerVenda.get('/BuscarVendas', buscarVendas);
+
 //Rota para buscar VENDA por ID
 routerVenda.get('/BuscarVendaID/:id', buscarVendaID);
+
 //Rota para inserir VENDA no data base
 routerVenda.post('/InserirVenda', inserirVenda);
+
 //Rota para atualizar VENDA no data base
+
 //Rota para deletar VENDA no data base
-routerVenda.post('/DeletarVenda', deletarVenda)
+routerVenda.delete('deletarVenda', deletarVenda)
+
 
 export default routerVenda;
